@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Work</title>
+    <link rel="stylesheet" href="workindi.css">
+    <link rel="stylesheet" href="https://use.typekit.net/wza6swk.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+</head>
+
+<body>
+    <div class="video-background">
+        <video id="background-video" muted playsinline>
+            <source src="desktop/fluidbackground.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="desktop/logonav.png" alt="My Logo">
+        </a>
+        <nav class="nav-links">
+            <a href="resume.html">Resume</a>
+            <a href="works.html">Works</a>
+            <a href="info.html">Info</a>
+        </nav>
+
+        <div class="hamburger" id="hamburger-icon">
+            &#9776; <!-- This is the hamburger icon -->
+        </div>
+
+    </header>
+
+    <div class="bg-container">
+        <img src="desktop/2d/bg.png" alt="bg" class="cover-image" />
+    </div>
+
+    <main>
+        <!-- Title and Subtitle -->
+        <h1 class="reveal-on-scroll">HANOI IN A NUTSHELL</h1>
+        <h2 class="reveal-on-scroll">Illustrator, Animator</h2>
+
+        <!-- Background Paragraph -->
+        <div class="background-paragraph">
+            <p class="reveal-on-scroll">This project aims to introduce the vibrant culture of Hanoi to international audience by showcasing its unique local charm. As a native Hanoian, I have not had many opportunities to share the beauty and spirit of my hometown with the world. Through this motion graphic, I want to take on the role of a friendly guide, offering viewers a lively glimpse into Hanoi’s character. By blending cultural highlights with colorful visual style, my goal is to present Hanoi not just as a place, but as a worthy experience. </p>
+
+    
+        </div>
+
+        <!-- Storyboard Section -->
+        <h2 class="reveal-on-scroll">STORYBOARD</h2>
+        <div class="storyboard-container reveal-on-scroll">
+            <div class="storyboard">
+                <img src="desktop/2d/storyboard1.PNG" alt="Storyboard Image 1">
+                <img src="desktop/2d/storyboard2.PNG" alt="Storyboard Image 2">
+                <img src="desktop/2d/storyboard3.PNG" alt="Storyboard Image 3">
+                <img src="desktop/2d/storyboard4.PNG" alt="Storyboard Image 4">
+                <img src="desktop/2d/storyboard5.PNG" alt="Storyboard Image 5">
+                <img src="desktop/2d/storyboard6.PNG" alt="Storyboard Image 6">
+                <img src="desktop/2d/storyboard7.PNG" alt="Storyboard Image 1">
+                <img src="desktop/2d/storyboard8.PNG" alt="Storyboard Image 2">
+                <img src="desktop/2d/storyboard9.PNG" alt="Storyboard Image 3">
+                <img src="desktop/2d/storyboard10.PNG" alt="Storyboard Image 4">
+                <img src="desktop/2d/storyboard11.PNG" alt="Storyboard Image 5">
+                <img src="desktop/2d/storyboard12.PNG" alt="Storyboard Image 6">
+            </div>
+        </div>
+
+        <!-- Main Scenes Slideshow Section -->
+        <h2 class="reveal-on-scroll">MAIN SCENES</h2>
+        <div class="slideshow-container reveal-on-scroll">
+            <div class="slideshow">
+                <img src="desktop/2d/scene1.png" alt="Scene 1">
+                <img src="desktop/2d/scene2.png" alt="Scene 2">
+                <img src="desktop/2d/scene3.png" alt="Scene 3">
+                <img src="desktop/2d/scene4.png" alt="Scene 4">
+            </div>
+            <!-- Left Arrow -->
+            <div class="arrow arrow-left" onclick="prevSlide()">
+                <img src="desktop/left-arrow.png" alt="Previous Slide">
+            </div>
+            <!-- Right Arrow -->
+            <div class="arrow arrow-right" onclick="nextSlide()">
+                <img src="desktop/right-arrow.png" alt="Next Slide">
+            </div>
+        </div>
+
+        <!-- Showreel Section -->
+        <h2 class="reveal-on-scroll">SHOWREEL</h2>
+        <div class="showreel reveal-on-scroll">
+            <iframe src="https://www.youtube.com/embed/VpnxC7Xq-8Y" title="Water Piece Showreel"></iframe>
+        </div>
+
+    </main>
+ <!-- Navigation Buttons -->
+ <div class="nav-buttons">
+    <a href="vj.html" class="nav-button">&laquo; Back</a>
+    <a href="3d.html" class="nav-button"> Next &raquo;</a>
+</div>
+    <footer>
+    <div class="logofooter">
+      <img src="desktop/logofooter.png" alt="My Logo">
+    </div>
+    
+    <div class="social-icons">
+      <a class="copy-email"
+      aria-label="Copy email address"
+      role="button"
+      tabindex="0">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+      <span class="tooltip">Click to copy</span>
+      </a>
+
+
+      <a href="https://www.facebook.com/baochaudo0409/" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/itscecilliado/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/chau-cecilia-do-a88852210/" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+
+<!--SCRIPT-->
+    <script>
+
+        //SCROLL
+        // Scroll Reveal Script
+        const observerOptions = {
+            root: null,            // Use the viewport as the root
+            threshold: 0.1         // Trigger when 50% of the element is visible
+        };
+
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                // When the element is in the viewport
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');  // Add the revealed class
+                } else {
+                    entry.target.classList.remove('revealed');  // Remove the revealed class if not in view
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, observerOptions);
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+        // Observe all elements with the class 'reveal-on-scroll'
+        revealElements.forEach(element => observer.observe(element));
+
+        //SLIDE
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow img');
+
+        function showSlide(index) {
+            // Handle wraparound cases
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+
+            // Hide all slides and reset active class
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+
+            // Show the current slide
+            slides[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        // Show the first slide initially
+        showSlide(slideIndex);
+
+
+        //BG VID
+        const video = document.getElementById('background-video');
+
+        // Wait for the video to load metadata
+        video.addEventListener('loadedmetadata', () => {
+            video.playbackRate = 1; // Set normal playback initially
+            video.currentTime = 0; // Start from the beginning
+            playForward();
+        });
+
+        // Function to play the video forward
+        function playForward() {
+            video.playbackRate = 1;
+            video.play();
+            video.onended = playReverse; // On end, play in reverse
+        }
+
+        // Function to play the video backward
+        function playReverse() {
+            video.pause();
+            let reverseInterval = setInterval(() => {
+                video.currentTime -= 0.033; // Go backward (about 30 fps)
+
+                if (video.currentTime <= 0) {
+                    clearInterval(reverseInterval); // Stop the interval
+                    playForward(); // Restart forward playback
+                }
+            }, 33);
+        }
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger-icon');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle the "active" class
+        });
+
+// Copy email
+  
+  const email = "dobaochau040905@gmail.com";
+  const copyBtn = document.querySelector(".copy-email");
+  const tooltip = copyBtn.querySelector(".tooltip");
+
+  let hideTimeout;
+
+  function showTooltip(text) {
+    tooltip.textContent = text;
+    copyBtn.classList.add("show-tooltip");
+
+    clearTimeout(hideTimeout);
+  }
+
+  function hideTooltip(delay = 0) {
+    hideTimeout = setTimeout(() => {
+      copyBtn.classList.remove("show-tooltip");
+    }, delay);
+  }
+
+  // Hover: show "Click to copy"
+  copyBtn.addEventListener("mouseenter", () => {
+    showTooltip("Click to copy");
+  });
+
+  copyBtn.addEventListener("mouseleave", () => {
+    hideTooltip(200);
+  });
+
+  // Click: copy + show confirmation
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(email).then(() => {
+      showTooltip("Copied to clipboard");
+      hideTooltip(1500);
+    });
+  });
+
+  // Keyboard accessibility
+  copyBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      navigator.clipboard.writeText(email).then(() => {
+        showTooltip("Copied to clipboard");
+        hideTooltip(1500);
+      });
+    }
+  });
+    </script>
+
+</body>
+
+</html>

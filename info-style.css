@@ -1,0 +1,666 @@
+/* --- 1. RESET & FONTS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body,
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+main > section {
+  margin-bottom: 15vw;
+}
+/* Global cursor */
+html, body, * {
+  cursor: url("desktop/cursor1.png") 0 0, auto !important;
+}
+
+/* Clickables */
+a, button, .hamburger {
+  cursor: url("desktop/cursor2.png") 0 0, pointer !important;
+}
+
+/* Media elements */
+video, iframe, svg, svg * {
+  cursor: url("desktop/cursor1.png") 0 0, auto !important;
+}
+
+/* Decorative layers */
+.video-background,
+.image-container,
+.cover-image {
+  pointer-events: none;
+}
+body {
+    background-color: #000;
+    color: #e8e8e8;
+    font-family: "new-science", Arial, sans-serif; 
+    overflow-x: hidden;
+}
+
+/* --- 2. BACKGROUND VIDEO --- */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Darken video so text pops */
+    background: rgba(0, 0, 0, 0.6); 
+}
+
+/* --- 3. GENERAL LAYOUT --- */
+.info-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* IMPORTANT: INCREASED TOP PADDING TO 15vw TO CLEAR THE FIXED HEADER */
+    padding: 15vw 20px 50px 20px; 
+}
+
+section {
+    min-height: 80vh;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- 4. SECTION 1: PROFILE (AVA + CAROUSEL) --- */
+.profile-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.left-col {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.right-col {
+    flex: 1.5;
+}
+
+/* Ava Video Frame */
+.ava-wrapper {
+    width: 300px;
+    height: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid #555;
+    box-shadow: 0 0 20px rgba(118, 160, 237, 0.3);
+}
+
+.ava-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ava-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* fills like a video */
+    display: block;
+}
+/* -- Carousel Logic -- */
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    min-height: 200px; /* Prevents layout jumping */
+    position: relative;
+}
+
+/* Update these in info-style.css */
+
+.speech-bubble {
+    /* === STYLE FROM WORKS.CSS .section-box === */
+    background: #000000;
+    box-shadow: 0 0 1vw 0.6vw #637eca99; /* Blue glow */
+    color: #e8e8e8; /* Light text */
+    
+    /* Layout properties (Kept original) */
+    padding: 1.5rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    position: relative;
+    
+    /* Animation states */
+    display: none; 
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hover effect to match the Works panel */
+.speech-bubble:hover {
+    background-color: #0b1021; 
+    box-shadow: 0 0 1vw 0.6vw #c5d2f7df; /* Brighter glow */
+}
+
+/* The Active Slide Class */
+.speech-bubble.active {
+    display: flex; 
+    opacity: 1;
+    transform: translateX(0);
+    animation: fadeInSlide 0.5s ease forwards;
+}
+
+/* Tail for Speech Bubble (Updated to Black) */
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 10px;
+    border-style: solid;
+    /* Changed color to #000000 to match the new background */
+    border-color: transparent #000000 transparent transparent;
+}
+
+/* IMPORTANT: Update Korean text color because dark blue won't show on black */
+.korean-text {
+    font-weight: bold;
+    color: #7ba0e9; /* Changed to Light Blue (Glow color) */
+    font-size: 0.9em;
+}
+/* Voice Button */
+.audio-btn {
+    background: #12224e;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-btn:hover {
+    background: #7ba0e9;
+    transform: scale(1.1);
+}
+
+
+
+/* Next Slide Arrow */
+.arrow-container {
+    margin-top: 10px;
+    padding-left: 20px;
+    width: fit-content;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.clickable-arrow {
+    width: 50px;
+    transition: filter 0.3s ease;
+    animation: bounce 2s infinite;
+}
+
+.clickable-arrow:hover {
+    filter: drop-shadow(0 0 5px #7ba0e9);
+}
+
+/* --- 5. SECTION 2: SPINNING VINYLS --- */
+.reverse-layout {
+    flex-direction: row;
+}
+
+/* Update this in info-style.css */
+
+.large-bubble {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    
+    /* === STYLE FROM WORKS.CSS .section-box === */
+    background-color: #000000;
+    box-shadow: 0 0 1vw 0.6vw #637eca99; /* The blue glow */
+    border-radius: 1vw;
+    color: #e8e8e8; /* Light text for dark bg */
+    border: none;
+    transition: 0.3s ease;
+    
+    /* Layout props */
+    display: flex;
+    opacity: 1; 
+    transform: none;
+    padding: 1.5rem;
+}
+
+/* Hover Effect matching .section-box */
+.large-bubble:hover {
+    background-color: #0b1021;
+    box-shadow: 0 0 1vw 0.6vw #c5d2f7df; /* Brighter glow on hover */
+}
+
+/* Update the tail to match the black background */
+.large-bubble::before {
+    /* Color changed to #000000 to match bubble */
+    border-color: transparent transparent transparent #000000;
+    left: auto;
+    right: -20px;
+}
+
+.visual-side {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pyramid-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    animation: floatGroup 6s ease-in-out infinite;
+    opacity: 0; /* Hidden initially for scroll reveal */
+    transition: opacity 1s ease;
+}
+.pyramid-container.visible { opacity: 1; }
+
+/* Wrapper for Disc + Overlay */
+.artist-disc {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Spinning Image */
+.vinyl-spin {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    animation: spinRecord 10s linear infinite;
+}
+
+/* Play/Pause Overlay */
+.disc-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+.disc-overlay i {
+    color: #fff;
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px #000);
+}
+
+/* Show Overlay on Hover OR when Playing */
+.artist-disc:hover .disc-overlay,
+.artist-disc.active-playing .disc-overlay {
+    opacity: 1;
+}
+
+/* Pyramid Positions */
+.p-top { top: 0; left: 50%; transform: translateX(-50%); z-index: 3; }
+.p-left { bottom: 20px; left: 0; z-index: 2; }
+.p-right { bottom: 20px; right: 0; z-index: 1; }
+
+
+/* --- 6. SECTION 3: MEDIA ROW --- */
+.column-layout {
+    flex-direction: column;
+    gap: 40px;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+}
+
+/* This handles the bubble in the bottom section where the arrow points DOWN */
+.column-layout .large-bubble::before {
+    /* Change the color (first value) from blue/transparent to black */
+    border-color: #000000 transparent transparent transparent;
+    
+    /* Keep these position settings from your original file */
+    left: 50%;
+    top: auto;
+    bottom: -20px;
+    right: auto;
+    transform: translateX(-50%);
+}
+
+.media-row-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+.media-row-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.media-card {
+    width: 180px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #555;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.media-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.media-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(118, 160, 237, 0.6);
+    z-index: 10;
+}
+.media-card:hover img { transform: scale(1.1); }
+
+/* --- 7. ANIMATION KEYFRAMES --- */
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+@keyframes spinRecord {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes floatGroup {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* =========================================
+   ADDED HEADER & FOOTER STYLING (From style.css)
+   ========================================= */
+
+/* Cursor fix for interactables */
+/* Clickables */
+a, button, .hamburger {
+    cursor: url("desktop/cursor2.png") 0 0, pointer !important;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(desktop/menubar.png);
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    padding: 1vw 4vw;
+    position: fixed;      
+    top: -2vw;               
+    left: 0;              
+    width: 100%;          
+    height: 10vw;
+    z-index: 1000;        
+}
+
+a.logo { margin: 0; }
+
+header .logo { width: 5vw; }
+
+header .logo img {
+    max-height: 3vw;
+    width: auto;
+    display: block;
+}
+
+/* Navigation links */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 3vw;
+    margin-bottom: 0;
+    font-family: new-science, sans-serif;
+    font-size: 1rem;
+}
+
+nav a:hover{
+    color: #7ba0e9; 
+    text-shadow: 0 0 0.5vw #0b0b0b, 0 0 2vw #cadbff;
+} 
+
+nav { display: block; }
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    color: white;
+}
+
+/* FOOTER */
+footer {
+    display: flex;            
+    flex-direction: column;    
+    align-items: center;       
+    justify-content: center;   
+    text-align: center;
+    padding-top: 5.5vw;
+    margin-top: auto;
+    background-image: url(desktop/footer.png);
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    bottom: 0;
+    width: 100%;
+    min-height: 25vw;
+    left: 0;
+    z-index: 10;
+}
+
+.logofooter img {
+    height: 8vw; 
+    width: auto;
+    margin-bottom: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; 
+    margin-bottom: 1rem;
+}
+
+.social-icons a svg {
+    width: 1.5rem; 
+    height: 1.5rem;
+    fill: #e7e7e7; 
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover svg {
+    fill: #7ba0e9; 
+    transform: translateY(-3px); 
+    filter: drop-shadow(0 0 5px #7ba0e9);
+}
+
+/* Copy Email Tooltip */
+.copy-email {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.copy-email .tooltip {
+    position: absolute;
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    background: #000;
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.4rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 999;
+}
+
+.copy-email.show-tooltip .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.copy-email .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0.4rem;
+    border-style: solid;
+    border-color: #000 transparent transparent transparent;
+}
+
+
+/* --- 8. RESPONSIVE (MERGED) --- */
+@media (max-width: 768px) {
+    /* Info Page Specifics */
+    .profile-section, .reverse-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .left-col, .right-col {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .carousel-container {
+        align-items: center;
+    }
+
+    .ava-wrapper {
+        width: 80%;
+        height: auto;
+        aspect-ratio: 9/16;
+    }
+
+    .speech-bubble::before {
+        border-color: transparent transparent rgba(255,255,255,0.9) transparent;
+        left: 50%;
+        top: -20px;
+        transform: translateX(-50%);
+    }
+
+    .media-card {
+        width: 45%; 
+    }
+
+    /* Header Mobile Specifics */
+    header {
+        height: 15vw; 
+        top: 7vw;   
+        background-size: 100% 100%;
+    }
+    
+    .nav-links {
+        flex-direction: row;   
+        position: absolute;  
+        top: 2vw;                 
+        right: 0;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        align-items: center;
+        width: 100%;              
+        background-color: #000;   
+        box-shadow: 0 0 1vw 0.6vw #637eca99; 
+        z-index: 1;               
+        transform: translateY(-20%); 
+        transition: transform 0.5s ease, opacity 0.3s ease; 
+    }
+
+    nav a { margin: 2vw; }
+
+    .hamburger { display: block; z-index: 2; }
+  
+    .nav-links.active {
+        transform: translateY(0);   
+        opacity: 1;                 
+        visibility: visible;        
+    }
+}

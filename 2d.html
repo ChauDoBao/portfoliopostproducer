@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Work</title>
+    <link rel="stylesheet" href="workindi.css">
+    <link rel="stylesheet" href="https://use.typekit.net/wza6swk.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+</head>
+
+<body>
+    <div class="video-background">
+        <video id="background-video" muted playsinline>
+            <source src="desktop/fluidbackground.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="desktop/logonav.png" alt="My Logo">
+        </a>
+        <nav class="nav-links">
+            <a href="resume.html">Resume</a>
+            <a href="works.html">Works</a>
+            <a href="info.html">Info</a>
+        </nav>
+
+        <div class="hamburger" id="hamburger-icon">
+            &#9776; <!-- This is the hamburger icon -->
+        </div>
+
+    </header>
+
+    <div class="bg-container">
+        <img src="desktop/2d/bg.png" alt="bg" class="cover-image" />
+    </div>
+
+    <main>
+        <!-- Title and Subtitle -->
+        <h1 class="reveal-on-scroll">WATER PIECE</h1>
+        <h2 class="reveal-on-scroll">Illustrator, Animator</h2>
+
+        <!-- Background Paragraph -->
+        <div class="background-paragraph">
+            <p class="reveal-on-scroll">This is an individual 2D Motion Graphics project to interpret a Haiku poem named
+            <strong>“Water Piece" from “Ono Yoko's Grapefruit" by Ono Yoko </strong>. About the book, the author said that the book was a cure
+                for her, a place for her to release her "madness." </p>
+
+            <p class="reveal-on-scroll"> Following that, in my motion graphic, I want to have things that are absurd, do
+                not exist in reality, and are beyond normal sensory perception, but they must still be peaceful and
+                poetic. I believe the scenery should be serene enough to make people forget the cruel reality of life.
+            </p>
+
+            <p class="reveal-on-scroll"> My interpretation of the poem “Water Piece” is that this poem is aimed at
+            <strong>appreciating the eternal beauty of nature, focusing on the two main elements: water and the moon </strong>. These
+                two objects may appear unrelated in some ways, but they share similar characteristics that represent the
+                never-ending cycle of life. Therefore, I thought I should show this connection clearly in my work by
+                creating <strong>“a loop"</strong> when the moon turns into water and the other way around.</p>
+        </div>
+
+        <!-- Storyboard Section -->
+        <h2 class="reveal-on-scroll">STORYBOARD</h2>
+        <div class="storyboard-container reveal-on-scroll">
+            <div class="storyboard">
+                <img src="desktop/2d/storyboard1.PNG" alt="Storyboard Image 1">
+                <img src="desktop/2d/storyboard2.PNG" alt="Storyboard Image 2">
+                <img src="desktop/2d/storyboard3.PNG" alt="Storyboard Image 3">
+                <img src="desktop/2d/storyboard4.PNG" alt="Storyboard Image 4">
+                <img src="desktop/2d/storyboard5.PNG" alt="Storyboard Image 5">
+                <img src="desktop/2d/storyboard6.PNG" alt="Storyboard Image 6">
+            </div>
+        </div>
+
+        <!-- Main Scenes Slideshow Section -->
+        <h2 class="reveal-on-scroll">MAIN SCENES</h2>
+        <div class="slideshow-container reveal-on-scroll">
+            <div class="slideshow">
+                <img src="desktop/2d/scene1.png" alt="Scene 1">
+                <img src="desktop/2d/scene2.png" alt="Scene 2">
+                <img src="desktop/2d/scene3.png" alt="Scene 3">
+                <img src="desktop/2d/scene4.png" alt="Scene 4">
+            </div>
+            <!-- Left Arrow -->
+            <div class="arrow arrow-left" onclick="prevSlide()">
+                <img src="desktop/left-arrow.png" alt="Previous Slide">
+            </div>
+            <!-- Right Arrow -->
+            <div class="arrow arrow-right" onclick="nextSlide()">
+                <img src="desktop/right-arrow.png" alt="Next Slide">
+            </div>
+        </div>
+
+        <!-- Showreel Section -->
+        <h2 class="reveal-on-scroll">SHOWREEL</h2>
+        <div class="showreel reveal-on-scroll">
+            <iframe src="https://www.youtube.com/embed/DFnP_BVkngM" title="Water Piece Showreel"></iframe>
+        </div>
+
+    </main>
+ <!-- Navigation Buttons -->
+ <div class="nav-buttons">
+    <a href="3d.html" class="nav-button">&laquo; Back</a>
+    <a href="vj.html" class="nav-button"> Next &raquo;</a>
+</div>
+    <footer>
+        <div class="logofooter">
+            <img src="desktop/logofooter.png" alt="My Logo">
+            </a>
+        </div>
+        <p>Email: <a href="mailto:dobaochau.gfv@gmail.com">dobaochau.gfv@gmail.com</a></p>
+        <p>
+            <a href="https://www.facebook.com/baochaudo0409/" target="_blank">Facebook</a> |
+            <a href="https://www.instagram.com/itsceciliado/" target="_blank">Instagram</a> |
+            <a href="https://www.linkedin.com/in/chau-do-a88852210/" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+
+
+<!--SCRIPT-->
+    <script>
+
+        //SCROLL
+        // Scroll Reveal Script
+        const observerOptions = {
+            root: null,            // Use the viewport as the root
+            threshold: 0.1         // Trigger when 50% of the element is visible
+        };
+
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                // When the element is in the viewport
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');  // Add the revealed class
+                } else {
+                    entry.target.classList.remove('revealed');  // Remove the revealed class if not in view
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, observerOptions);
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+        // Observe all elements with the class 'reveal-on-scroll'
+        revealElements.forEach(element => observer.observe(element));
+
+        //SLIDE
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow img');
+
+        function showSlide(index) {
+            // Handle wraparound cases
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+
+            // Hide all slides and reset active class
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+
+            // Show the current slide
+            slides[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        // Show the first slide initially
+        showSlide(slideIndex);
+
+
+        //BG VID
+        const video = document.getElementById('background-video');
+
+        // Wait for the video to load metadata
+        video.addEventListener('loadedmetadata', () => {
+            video.playbackRate = 1; // Set normal playback initially
+            video.currentTime = 0; // Start from the beginning
+            playForward();
+        });
+
+        // Function to play the video forward
+        function playForward() {
+            video.playbackRate = 1;
+            video.play();
+            video.onended = playReverse; // On end, play in reverse
+        }
+
+        // Function to play the video backward
+        function playReverse() {
+            video.pause();
+            let reverseInterval = setInterval(() => {
+                video.currentTime -= 0.033; // Go backward (about 30 fps)
+
+                if (video.currentTime <= 0) {
+                    clearInterval(reverseInterval); // Stop the interval
+                    playForward(); // Restart forward playback
+                }
+            }, 33);
+        }
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger-icon');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle the "active" class
+        });
+
+
+    </script>
+
+</body>
+
+</html>
